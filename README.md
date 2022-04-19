@@ -1,24 +1,66 @@
-# README
+# DB設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## users テーブル
 
-Things you may want to cover:
+| Column             | Type    | Options                   |
+| ------------------ | ------  | --------------            |
+| email              | string  | null: false, unique: true |
+| encrypted_password | string  | null:   |false            |
+| nickname           | string  | null:   |false            |
+| name               | string  | null:   |false            |
+| birthday           | integer | null:   |false            |
 
-* Ruby version
+### Association
 
-* System dependencies
+* has_many :items
+* has_many :purchases
 
-* Configuration
 
-* Database creation
+## items テーブル
 
-* Database initialization
+| Column         | Type    | Options                         |
+| ----------     | --------| --------------------------------|
+| product_name   | text    | null: | false                   |
+| explanation    | text    | null: | false                   |
+| category       | string  | null: | false                   |
+| condition      | string  | null: | false                   |
+| load           | string  | null: | false                   |
+| area           | string  | null: | false                   |
+| days           | string  | null: | false                   |
+| selling _price | integer | null: | false                   |
 
-* How to run the test suite
+### Association
 
-* Services (job queues, cache servers, search engines, etc.)
+belongs_to :user
+has_one :purchase
 
-* Deployment instructions
 
-* ...
+## purchases テーブル
+
+| Column         | Type   | Options       |
+| ---------      | -------| --------------|
+| buyer          | string | null: false   |
+| purchase_goods | string | null: false   |
+
+### Association
+
+belongs_to :user
+belongs_to :item
+has_one : send
+
+
+
+## informations テーブル
+
+| Column             | Type    | Options                         |
+| ----------         | --------| --------------------------------|
+| postal_code        | integer | null: | false                   |
+| prefectures        | string  | null: | false                   |
+| municipalities     | string  | null: | false                   |
+| address            | string  | null: | false                   |
+| building_name      | string  | null: | true                    |
+| telephone_number   | string  | null: | false                   |
+
+### Association
+
+belongs_to :purchase
