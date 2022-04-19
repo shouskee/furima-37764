@@ -5,10 +5,13 @@
 | Column             | Type    | Options                   |
 | ------------------ | ------  | --------------            |
 | email              | string  | null: false, unique: true |
-| encrypted_password | string  | null:   |false            |
-| nickname           | string  | null:   |false            |
-| name               | string  | null:   |false            |
-| birthday           | integer | null:   |false            |
+| encrypted_password | string  | null: false               |
+| nickname           | string  | null: false               |
+| second_name        | string  | null: false               |
+| first_name         | string  | null: false               |
+| second_kana        | string  | null: false               |
+| first_kana         | string  | null: false               |
+| birthday           | date    | null: false               |
 
 ### Association
 
@@ -18,16 +21,16 @@
 
 ## items テーブル
 
-| Column         | Type    | Options                         |
-| ----------     | --------| --------------------------------|
-| product_name   | text    | null: | false                   |
-| explanation    | text    | null: | false                   |
-| category       | string  | null: | false                   |
-| condition      | string  | null: | false                   |
-| load           | string  | null: | false                   |
-| area           | string  | null: | false                   |
-| days           | string  | null: | false                   |
-| selling _price | integer | null: | false                   |
+| Column         | Type     | Options                       |
+| ----------     | -------- | ------------------------------|
+| product_name   | string   | null: false                   |
+| explanation    | text     | null: false                   |
+| category_id    | integer  | null: false                   |
+| condition_id   | integer  | null: false                   |
+| load_id        | integer  | null: false                   |
+| area_id        | integer  | null: false                   |
+| days_id        | integer  | null: false                   |
+| selling_price  | integer  | null: false                   |
 
 ### Association
 
@@ -52,14 +55,14 @@ has_one : send
 
 ## informations テーブル
 
-| Column             | Type    | Options                         |
-| ----------         | --------| --------------------------------|
-| postal_code        | integer | null: | false                   |
-| prefectures        | string  | null: | false                   |
-| municipalities     | string  | null: | false                   |
-| address            | string  | null: | false                   |
-| building_name      | string  | null: | true                    |
-| telephone_number   | string  | null: | false                   |
+| Column             | Type    | Options                        |
+| ----------         | --------| ------------------------------ |
+| postal_code        | string  | null: false                    |
+| area               | string  | null: false                    |
+| city_name          | string  | null: false                    |
+| address            | string  | null: false, foreign_key: true |
+| building_name      | string  |              foreign_key: true |
+| telephone_number   | string  | null: false, foreign_key: true |
 
 ### Association
 
