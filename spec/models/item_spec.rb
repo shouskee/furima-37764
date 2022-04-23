@@ -13,7 +13,7 @@ RSpec.describe User, type: :model do
     end
     context '出品できない場合' do
       it ' product_nameが空では登録できない' do
-        @item. product_name  = ''
+        @item.product_name = ''
         @item.valid?
         expect(@item.errors.full_messages).to include("Product name can't be blank")
       end
