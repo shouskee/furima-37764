@@ -18,8 +18,7 @@ class Item < ApplicationRecord
   validates :image, presence: true
 
   validates :selling_price, numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999 },
-  presence: true 
-  
+                            presence: true
 
   has_one_attached :image
 end

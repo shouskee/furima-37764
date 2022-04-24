@@ -20,7 +20,7 @@ RSpec.describe User, type: :model do
       it 'explanationeが空では登録できない' do
         @item.explanation = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include()
+        expect(@item.errors.full_messages).to include
       end
       it 'category_idが空では登録できない' do
         @item.category_id = 1
@@ -55,27 +55,27 @@ RSpec.describe User, type: :model do
       it 'selling_priceが空では登録できない' do
         @item.selling_price = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include("Selling price must be greater than or equal to 300")
+        expect(@item.errors.full_messages).to include('Selling price must be greater than or equal to 300')
       end
       it 'userが紐付いていないと出品できない' do
         @item.user = nil
         @item.valid?
-        expect(@item.errors.full_messages).to include("User must exist")
+        expect(@item.errors.full_messages).to include('User must exist')
       end
       it '販売価格が¥300より少ない時は登録できない' do
         @item.selling_price = 299
         @item.valid?
-        expect(@item.errors.full_messages).to include("Selling price must be greater than or equal to 300")
+        expect(@item.errors.full_messages).to include('Selling price must be greater than or equal to 300')
       end
       it '販売価格が¥9999999より大きい時は登録できない' do
         @item.selling_price = 10_000_000
         @item.valid?
-        expect(@item.errors.full_messages).to include("Selling price must be less than or equal to 9999999")
+        expect(@item.errors.full_messages).to include('Selling price must be less than or equal to 9999999')
       end
       it '価格に半角数字以外が含まれているときは出品できない' do
         @item.selling_price = 'あああああ'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Selling price is not a number")
+        expect(@item.errors.full_messages).to include('Selling price is not a number')
       end
     end
   end
