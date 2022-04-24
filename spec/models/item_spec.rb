@@ -18,7 +18,7 @@ RSpec.describe User, type: :model do
         expect(@item.errors.full_messages).to include("Product name can't be blank")
       end
       it 'explanationeが空では登録できない' do
-        @item.explanation = 1
+        @item.explanation = ''
         @item.valid?
         expect(@item.errors.full_messages).to include()
       end
@@ -53,7 +53,7 @@ RSpec.describe User, type: :model do
         expect(@item.errors.full_messages).to include("Shipping day can't be blank")
       end
       it 'selling_priceが空では登録できない' do
-        @item.selling_price = 1
+        @item.selling_price = ''
         @item.valid?
         expect(@item.errors.full_messages).to include("Selling price must be greater than or equal to 300")
       end
@@ -67,7 +67,7 @@ RSpec.describe User, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include("Selling price must be greater than or equal to 300")
       end
-      it '販売価格が¥9999999より少ない時は登録できない' do
+      it '販売価格が¥9999999より大きい時は登録できない' do
         @item.selling_price = 10_000_000
         @item.valid?
         expect(@item.errors.full_messages).to include("Selling price must be less than or equal to 9999999")
