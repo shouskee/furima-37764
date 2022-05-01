@@ -8,7 +8,7 @@ RSpec.describe PurchaseInformation, type: :model do
   end
 
   context '内容に問題ない場合' do
-    it 'tokenとuser_idとitem_idとpostal_codeとarea_idとcity_nameとaddressとbuilding_nameとtelephone_numberがあれば保存ができること,building_nameがなくても購入できる' do
+    it 'tokenとuser_idとitem_idとpostal_codeとarea_idとcity_nameとaddressとbuilding_nameとtelephone_numberとbuilding_nameあれば保存ができること' do
       expect(@purchase_information).to be_valid
     end
   end
@@ -62,17 +62,17 @@ RSpec.describe PurchaseInformation, type: :model do
     it 'telephone_numberは10桁以上11桁以内の半角数値のみ保存可能なこと' do
       @purchase_information.telephone_number = '090-1234-5678'
       @purchase_information.valid?
-      expect(@purchase_information.errors.full_messages).to include
+      expect(@purchase_information.errors.full_messages).to include("Telephone number is invalid. Include hyphen(-)")
     end
     it 'telephone_numberは9桁以下では購入できない' do
       @purchase_information.telephone_number = '09012345'
       @purchase_information.valid?
-      expect(@purchase_information.errors.full_messages).to include
+      expect(@purchase_information.errors.full_messages).to include("Telephone number is invalid. Include hyphen(-)")
     end
     it 'telephone_numberは12桁以上では購入できない' do
       @purchase_information.telephone_number = '090123456789'
       @purchase_information.valid?
-      expect(@purchase_information.errors.full_messages).to include
+      expect(@purchase_information.errors.full_messages).to include("Telephone number is invalid. Include hyphen(-)")
     end
   end
 end
