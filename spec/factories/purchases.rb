@@ -5,7 +5,7 @@ FactoryBot.define do
     area_id { 2 }
     city_name { 'test' }
     address { 'test' }
-    building_name{''}
+    building_name{'テスト'}
     telephone_number { '09012345678' }
   end
 end

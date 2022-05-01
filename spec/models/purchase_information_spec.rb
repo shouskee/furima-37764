@@ -8,11 +8,15 @@ RSpec.describe PurchaseInformation, type: :model do
   end
 
   context '内容に問題ない場合' do
-    it 'tokenとuser_idとitem_idとpostal_codeとarea_idとcity_nameとaddressとbuilding_nameとtelephone_numberとbuilding_nameあれば保存ができること' do
+    it 'tokenとuser_idとitem_idとpostal_codeとarea_idとcity_nameとaddressとbuilding_nameとtelephone_numberがあれば保存ができること' do
+      expect(@purchase_information).to be_valid
+    end
+
+    it 'building_nameは空でも登録できること' do
+      @purchase_information.building_name = ''
       expect(@purchase_information).to be_valid
     end
   end
-
   context '内容に問題がある場合' do
     it 'tokenが空では登録できないこと' do
       @purchase_information.token = ''
