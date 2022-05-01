@@ -4,7 +4,6 @@ class ItemsController < ApplicationController
   before_action :move_to_path, only: [:destroy, :update, :edit]
   before_action :prevent_url, only: [:edit, :update, :destroy]
 
-
   def index
     @items = Item.order('created_at DESC')
   end
@@ -38,7 +37,7 @@ class ItemsController < ApplicationController
 
   def destroy
     @item.destroy
-    redirect_to root_path  
+    redirect_to root_path
   end
 
   private
@@ -52,14 +51,11 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
   end
 
-  def  move_to_path
+  def move_to_path
     redirect_to root_path unless @item.user_id == current_user.id
   end
 
   def prevent_url
-    if @item.user_id != current_user.id || @item.purchase != nil
-      redirect_to root_path
-    end
+    redirect_to root_path if @item.user_id != current_user.id || !@item.purchase.nil?
   end
-
 end

@@ -4,17 +4,17 @@ RSpec.describe PurchaseInformation, type: :model do
   before do
     user = FactoryBot.create(:user)
     item = FactoryBot.create(:item)
-    @purchase_information = FactoryBot.build(:purchase_information, user_id: user.id,item_id: item.id)
+    @purchase_information = FactoryBot.build(:purchase_information, user_id: user.id, item_id: item.id)
   end
 
   context '内容に問題ない場合' do
-    it "tokenとuser_idとitem_idとpostal_codeとarea_idとcity_nameとaddressとbuilding_nameとtelephone_numberがあれば保存ができること" do
+    it 'tokenとuser_idとitem_idとpostal_codeとarea_idとcity_nameとaddressとbuilding_nameとtelephone_numberがあれば保存ができること' do
       expect(@purchase_information).to be_valid
     end
   end
 
   context '内容に問題がある場合' do
-    it "tokenが空では登録できないこと" do
+    it 'tokenが空では登録できないこと' do
       @purchase_information.token = ''
       @purchase_information.valid?
       expect(@purchase_information.errors.full_messages).to include("Token can't be blank")
@@ -37,7 +37,7 @@ RSpec.describe PurchaseInformation, type: :model do
     it 'postal_codeは「3桁ハイフン4桁」の半角文字列のみ保存可能なこと' do
       @purchase_information.postal_code = '1234567'
       @purchase_information.valid?
-      expect(@purchase_information.errors.full_messages).to include("Postal code is invalid. Include hyphen(-)")
+      expect(@purchase_information.errors.full_messages).to include('Postal code is invalid. Include hyphen(-)')
     end
     it 'area_idが空では登録できない' do
       @purchase_information.area_id = 1
@@ -64,5 +64,5 @@ RSpec.describe PurchaseInformation, type: :model do
       @purchase_information.valid?
       expect(@purchase_information.errors.full_messages).to include
     end
-  end  
-end  
+  end
+end
