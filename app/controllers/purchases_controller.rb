@@ -1,6 +1,5 @@
 class PurchasesController < ApplicationController
-  before_action :authenticate_user!, except: :index
-  before_action :authenticate_user!, only: [:show, :index]
+  before_action :authenticate_user!, only: [:create, :index]
   before_action :set_item, only: [:index, :create]
   before_action :prevent_url, only: [:index, :create]
 

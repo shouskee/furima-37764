@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, only: [:new, :edit, :destroy, :show]
+  before_action :authenticate_user!, only: [:new, :edit, :destroy]
   before_action :move_to_path, only: [:destroy, :update, :edit]
   before_action :prevent_url, only: [:edit, :update, :destroy]
 
