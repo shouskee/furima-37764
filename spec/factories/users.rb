@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :user do
     nickname { 'tarou' }
-    second_name { '佐々木' }
+    second_name { '田中' }
     first_name { '太郎' }
     second_kana { 'ササキ' }
     first_kana { 'タロウ' }
