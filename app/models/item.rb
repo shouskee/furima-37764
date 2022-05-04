@@ -7,11 +7,11 @@ class Item < ApplicationRecord
   belongs_to :shipping_day
   belongs_to :user
 
-  validates :category_id, numericality: { other_than: 1, message: "can't be blank" }
-  validates :condition_id, numericality: { other_than: 1, message: "can't be blank" }
-  validates :load_id, numericality: { other_than: 1, message: "can't be blank" }
-  validates :area_id, numericality: { other_than: 1, message: "can't be blank" }
-  validates :shipping_day_id, numericality: { other_than: 1, message: "can't be blank" }
+  validates :category_id, numericality: { other_than: 1, message: "を入力してください" }
+  validates :condition_id, numericality: { other_than: 1, message: "を入力してください" }
+  validates :load_id, numericality: { other_than: 1, message: "を入力してください" }
+  validates :area_id, numericality: { other_than: 1, message: "を入力してください" }
+  validates :shipping_day_id, numericality: { other_than: 1, message: "を入力してください" }
   validates :product_name, presence: true
   validates :explanation, presence: true
   validates :image, presence: true
